@@ -4,6 +4,7 @@
 The objective of this project is to develop a machine learning model to predict the net hourly electrical energy output (PE, in MW) of a Combined Cycle Power Plant (CCPP) operating at full load. The prediction is based on ambient environmental data collected from sensors over a $6$-year period.
 
 ![power](png/power-2.png)
+
 ## How a Combined Cycle Power Plant (CCPP) Works
 A combined cycle power plant is a highly efficient method of electricity generation that integrates both gas and steam turbines:
 
@@ -38,11 +39,16 @@ The dataset contains $9,568$ hourly average observations of the following physic
 ## Key Findings & Results
 * **Feature Engineering:** The raw physical features naturally describe the process patterns. Additional transformations (other than scaling) did not yield any significant improvements in model quality.
 * **Model Performance:** Tree-based ensemble models (`CatBoost`, `XGBoost`) demonstrated the best results compared to baseline linear algorithms.
+
 ![CatBoost](png/CatBoost.png)
+
 * **Super Learner:** A stacking ensemble (comprising `CatBoost`, `XGBoost`, `Random Forest`, `SVR`) provided an industrial-grade level of precision: $R^2$ of approximately $0.971$ and an $RMSE$ of approximately $2.91$ on the test set.
 * **Error (Residual) Analysis:** The distribution of the model's residuals is symmetric and centered around zero, proving the absence of systematic bias.
+
 ![residuals](png/residuals.png)
+
 * **Predicted vs True:** Errors are purely random, and the plot comparing predicted vs. true values maintains a strict diagonal structure with no skewness, confirming the stability of the model on new data.
+
 ![PredictedVsTrue](png/PredictedVsTrue.png)
 
 ## Conclusion
